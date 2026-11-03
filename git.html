@@ -601,6 +601,53 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden}
   #music .music-content{padding-bottom:8rem}
   .luna-return-to-loom{top:8px;right:8px;min-height:34px;padding:0 10px}
 }
+
+/* Keep Luna's interface palette neutral even when Loom uses a colored theme. */
+#music{
+  --accent-color:#d6d6d6;
+  --bg-color:#0b0b0b;
+  --text-color:#f2f2f2;
+  --border-color:#393939;
+  --panel-bg:#171717;
+  --modal-bg:#1d1d1d;
+  --muted-text:#a5a5a5;
+  --appearance-surface:#171717;
+  --appearance-raised:#1d1d1d;
+  --appearance-hover:#2a2a2a;
+  --appearance-border:#393939;
+  --music-bg:#101010;
+  --music-panel:#191919;
+  --music-panel-2:#242424;
+  --music-text:#f2f2f2;
+  --music-muted:#a5a5a5;
+  --music-line:rgba(255,255,255,.1);
+}
+#music .music-app{
+  background:radial-gradient(ellipse at 72% 0,rgba(255,255,255,.045),transparent 31rem),linear-gradient(135deg,#101010,#151515);
+}
+#music .music-sidebar{background:rgba(13,13,13,.9)}
+#music .music-search{background:#1c1c1c}
+#music .music-search input::placeholder{color:#858585}
+#music .music-nav-button.active{background:#292929}
+#music .music-player{background:rgba(27,27,27,.98)}
+#music .music-icon-button.active{color:#e5e5e5;background:rgba(255,255,255,.1)}
+.music-cover-notice{
+  --accent-color:#d6d6d6;
+  --bg-color:#0b0b0b;
+  --text-color:#f2f2f2;
+  --modal-bg:#1d1d1d;
+  --panel-bg:#171717;
+  --appearance-raised:#1d1d1d;
+  --appearance-surface:#171717;
+  --appearance-border:#393939;
+}
+.music-covers-blocked .music-card-art,
+.music-covers-blocked .music-playlist-cover:not(.empty),
+.music-covers-blocked .music-track-art-wrap{
+  background:linear-gradient(140deg,#252525,#555 55%,#888);
+}
+.music-covers-blocked .music-icon-button.active{color:#e5e5e5;background:rgba(255,255,255,.1)}
+.luna-return-to-loom{border-color:rgba(255,255,255,.2);background:rgba(20,20,20,.94);color:#fff}
 </style>
  </head>
  <body>
