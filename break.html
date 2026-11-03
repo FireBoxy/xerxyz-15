@@ -1,4 +1,12 @@
-<style data-loon-music-style>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Luna Music
+  </title>
+  <style data-loon-music-style>
 /* Loom Music: music.html is self-contained and CDNs/static-host friendly. */
 #music{position:relative;--music-bg:#171713;--music-panel:#22221e;--music-panel-2:#2a2a25;--music-text:#f5f3e8;--music-muted:#aaa99d;--music-line:rgba(245,243,232,.09);color:var(--music-text)}
 .music-app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:min(760px,calc(100dvh - 150px));overflow:hidden;border:1px solid var(--music-line);border-radius:8px;background:radial-gradient(circle at 78% 10%,rgba(188,176,137,.08),transparent 28rem),var(--music-bg);box-shadow:0 24px 70px rgba(0,0,0,.22)}
@@ -549,86 +557,206 @@
   #music .music-search-submit span{font-size:1rem}
 }
 </style>
-<div id="music" class="page-content">
-  <div class="music-app">
-    <aside class="music-sidebar" aria-label="Music navigation">
-      <div class="music-brand"><span class="music-brand-mark" aria-hidden="true"><span class="music-moon-icon"></span></span><span class="music-brand-copy"><strong>Luna</strong><small>YOUR LISTENING SPACE</small></span></div>
-      <nav class="music-nav" aria-label="Music sections">
-        <span class="music-sidebar-label">LIBRARY</span>
-        <button class="music-nav-button active" type="button" data-music-view="home"><span>⌂</span><span>Home</span></button>
-        <button class="music-nav-button" type="button" data-music-view="search"><span>⌕</span><span>Search</span></button>
-        <button class="music-nav-button" type="button" data-music-view="library"><span>♡</span><span>Liked songs</span></button>
-        <button class="music-nav-button" type="button" data-music-view="queue"><span>≡</span><span>Queue</span></button>
-      </nav>
-      <div class="music-playlists">
-        <div class="music-playlists-heading"><span>YOUR PLAYLISTS</span><button id="music-new-playlist" type="button" aria-label="Create playlist" title="Create playlist">＋</button></div>
-        <div id="music-playlist-list"></div>
+ </head>
+ <body>
+  <div class="page-content" id="music">
+   <div class="music-app">
+    <aside aria-label="Music navigation" class="music-sidebar">
+     <div class="music-brand">
+      <span aria-hidden="true" class="music-brand-mark">
+       <span class="music-moon-icon">
+       </span>
+      </span>
+      <span class="music-brand-copy">
+       <strong>
+        Luna
+       </strong>
+       <small>
+        YOUR LISTENING SPACE
+       </small>
+      </span>
+     </div>
+     <nav aria-label="Music sections" class="music-nav">
+      <span class="music-sidebar-label">
+       LIBRARY
+      </span>
+      <button class="music-nav-button active" data-music-view="home" type="button">
+       <span>
+        ⌂
+       </span>
+       <span>
+        Home
+       </span>
+      </button>
+      <button class="music-nav-button" data-music-view="search" type="button">
+       <span>
+        ⌕
+       </span>
+       <span>
+        Search
+       </span>
+      </button>
+      <button class="music-nav-button" data-music-view="library" type="button">
+       <span>
+        ♡
+       </span>
+       <span>
+        Liked songs
+       </span>
+      </button>
+      <button class="music-nav-button" data-music-view="queue" type="button">
+       <span>
+        ≡
+       </span>
+       <span>
+        Queue
+       </span>
+      </button>
+     </nav>
+     <div class="music-playlists">
+      <div class="music-playlists-heading">
+       <span>
+        YOUR PLAYLISTS
+       </span>
+       <button aria-label="Create playlist" id="music-new-playlist" title="Create playlist" type="button">
+        ＋
+       </button>
       </div>
+      <div id="music-playlist-list">
+      </div>
+     </div>
     </aside>
-
     <main class="music-main">
-      <div class="music-topbar">
-        <div class="music-mobile-brand"><span class="music-brand-mark" aria-hidden="true"><span class="music-moon-icon"></span></span><span>Luna</span></div>
-        <form class="music-search" id="music-search-form" role="search">
-          <span class="music-search-icon" aria-hidden="true">⌕</span>
-          <input id="music-search-input" type="search" placeholder="Search songs, artists, albums…" aria-label="Search songs, artists, and albums">
-          <kbd class="music-search-shortcut" aria-hidden="true">↵</kbd>
-          <button class="music-search-submit" type="submit" aria-label="Search">Search <span aria-hidden="true">→</span></button>
-        </form>
-
+     <div class="music-topbar">
+      <div class="music-mobile-brand">
+       <span aria-hidden="true" class="music-brand-mark">
+        <span class="music-moon-icon">
+        </span>
+       </span>
+       <span>
+        Luna
+       </span>
       </div>
-
-      <div class="music-content">
-        <div class="music-heading">
-          <div><h1 id="music-heading-title">Your music</h1><p id="music-heading-subtitle">Curated YouTube mixes</p></div>
-        </div>
-        <p class="music-status" id="music-status" role="status" aria-live="polite"></p>
-        <div class="music-grid" id="music-grid"></div>
+      <form class="music-search" id="music-search-form" role="search">
+       <span aria-hidden="true" class="music-search-icon">
+        ⌕
+       </span>
+       <input aria-label="Search songs, artists, and albums" id="music-search-input" placeholder="Search songs, artists, albums…" type="search"/>
+       <kbd aria-hidden="true" class="music-search-shortcut">
+        ↵
+       </kbd>
+       <button aria-label="Search" class="music-search-submit" type="submit">
+        Search
+        <span aria-hidden="true">
+         →
+        </span>
+       </button>
+      </form>
+     </div>
+     <div class="music-content">
+      <div class="music-heading">
+       <div>
+        <h1 id="music-heading-title">
+         Your music
+        </h1>
+        <p id="music-heading-subtitle">
+         Curated YouTube mixes
+        </p>
+       </div>
       </div>
+      <p aria-live="polite" class="music-status" id="music-status" role="status">
+      </p>
+      <div class="music-grid" id="music-grid">
+      </div>
+     </div>
     </main>
-
-    <div class="music-player" aria-label="Music player">
-      <div class="music-track">
-        <span class="music-track-art-wrap"><img class="music-track-art" id="music-track-art" alt=""></span>
-        <div class="music-track-copy">
-          <div class="music-track-title" id="music-track-title">No track selected</div>
-          <div class="music-track-channel" id="music-track-channel">Choose a result to play</div>
-        </div>
+    <div aria-label="Music player" class="music-player">
+     <div class="music-track">
+      <span class="music-track-art-wrap">
+       <img alt="" class="music-track-art" id="music-track-art"/>
+      </span>
+      <div class="music-track-copy">
+       <div class="music-track-title" id="music-track-title">
+        No track selected
+       </div>
+       <div class="music-track-channel" id="music-track-channel">
+        Choose a result to play
+       </div>
       </div>
-      <div class="music-controls">
-        <div class="music-control-row">
-          <button class="music-icon-button" id="music-shuffle" type="button" aria-label="Shuffle" title="Shuffle">↝</button>
-          <button class="music-icon-button" id="music-prev" type="button" aria-label="Previous track" title="Previous">Ⅰ</button>
-          <button class="music-icon-button" id="music-back" type="button" aria-label="Back 5 seconds" title="Back 5 seconds">−5</button>
-          <button class="music-icon-button primary" id="music-play" type="button" aria-label="Play" title="Play">▶</button>
-          <button class="music-icon-button" id="music-forward" type="button" aria-label="Forward 5 seconds" title="Forward 5 seconds">+5</button>
-          <button class="music-icon-button" id="music-next" type="button" aria-label="Next track" title="Next">Ⅱ</button>
-          <button class="music-icon-button" id="music-repeat" type="button" aria-label="Repeat" title="Repeat">↻</button>
-        </div>
-        <div class="music-timeline"><span id="music-time-current">0:00</span><input class="music-progress" id="music-progress" type="range" min="0" max="100" value="0" aria-label="Playback position"><span id="music-time-total">0:00</span></div>
+     </div>
+     <div class="music-controls">
+      <div class="music-control-row">
+       <button aria-label="Shuffle" class="music-icon-button" id="music-shuffle" title="Shuffle" type="button">
+        ↝
+       </button>
+       <button aria-label="Previous track" class="music-icon-button" id="music-prev" title="Previous" type="button">
+        Ⅰ
+       </button>
+       <button aria-label="Back 5 seconds" class="music-icon-button" id="music-back" title="Back 5 seconds" type="button">
+        −5
+       </button>
+       <button aria-label="Play" class="music-icon-button primary" id="music-play" title="Play" type="button">
+        ▶
+       </button>
+       <button aria-label="Forward 5 seconds" class="music-icon-button" id="music-forward" title="Forward 5 seconds" type="button">
+        +5
+       </button>
+       <button aria-label="Next track" class="music-icon-button" id="music-next" title="Next" type="button">
+        Ⅱ
+       </button>
+       <button aria-label="Repeat" class="music-icon-button" id="music-repeat" title="Repeat" type="button">
+        ↻
+       </button>
       </div>
-      <div class="music-volume">
-        <button class="music-icon-button" id="music-mute" type="button" aria-label="Mute" title="Mute">◖</button>
-        <input id="music-volume" type="range" min="0" max="100" value="70" aria-label="Volume">
+      <div class="music-timeline">
+       <span id="music-time-current">
+        0:00
+       </span>
+       <input aria-label="Playback position" class="music-progress" id="music-progress" max="100" min="0" type="range" value="0"/>
+       <span id="music-time-total">
+        0:00
+       </span>
       </div>
-      <button class="music-icon-button music-favorite-player" id="music-favorite" type="button" aria-label="Favorite track" title="Favorite">♡</button>
+     </div>
+     <div class="music-volume">
+      <button aria-label="Mute" class="music-icon-button" id="music-mute" title="Mute" type="button">
+       ◖
+      </button>
+      <input aria-label="Volume" id="music-volume" max="100" min="0" type="range" value="70"/>
+     </div>
+     <button aria-label="Favorite track" class="music-icon-button music-favorite-player" id="music-favorite" title="Favorite" type="button">
+      ♡
+     </button>
     </div>
-  </div>
-  <aside class="music-cover-notice" id="music-cover-notice" role="region" aria-label="Album cover display">
-    <span class="music-cover-notice-copy"><strong>Are song covers blocked for you?</strong><span>We can show a colorful music-note cover instead.</span></span>
-    <span class="music-cover-notice-actions">
-      <button type="button" data-cover-answer="no">No</button>
-      <button type="button" data-cover-answer="yes">Yes, hide covers</button>
+   </div>
+   <aside aria-label="Album cover display" class="music-cover-notice" id="music-cover-notice" role="region">
+    <span class="music-cover-notice-copy">
+     <strong>
+      Are song covers blocked for you?
+     </strong>
+     <span>
+      We can show a colorful music-note cover instead.
+     </span>
     </span>
-  </aside>
-
-  <dialog class="music-dialog" id="music-dialog" aria-labelledby="music-dialog-title">
-    <div class="music-dialog-inner" id="music-dialog-content"></div>
-  </dialog>
-  <div class="music-youtube-hidden"><div id="music-youtube-player"></div></div>
-
-</div>
-<script data-loon-music-script>
+    <span class="music-cover-notice-actions">
+     <button data-cover-answer="no" type="button">
+      No
+     </button>
+     <button data-cover-answer="yes" type="button">
+      Yes, hide covers
+     </button>
+    </span>
+   </aside>
+   <dialog aria-labelledby="music-dialog-title" class="music-dialog" id="music-dialog">
+    <div class="music-dialog-inner" id="music-dialog-content">
+    </div>
+   </dialog>
+   <div class="music-youtube-hidden">
+    <div id="music-youtube-player">
+    </div>
+   </div>
+  </div>
+  <script data-loon-music-script>
 (() => {
   'use strict';
   const FAVORITES_STORAGE = 'loom_music_favorites';
@@ -805,3 +933,5 @@
   init();
 })();
 </script>
+ </body>
+</html>
